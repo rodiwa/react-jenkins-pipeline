@@ -29,5 +29,10 @@ pipeline {
         sh 'npm run test:noWatch'
       }
     }
+    stage('Last command') {
+      steps {
+        echo 'if this runs, then all tests have passed'
+      }
+    }
   }
 }
