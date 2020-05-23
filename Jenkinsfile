@@ -1,16 +1,32 @@
 pipeline {
   agent any
 
+  tools {
+    nodejs 'node'
+  }
+
   stages {
-    stage('Initial') }{
+    stage('Get git repo') {
       steps {
-        echo 'initial step comes here'
+        git 'https://github.com/rodiwa/react-jenkins-pipeline'
+      }
+    }
+    stage('Log Node version') {
+      steps {
+        echo 'Node version is:'
+        sh 'node --version'
+      }
+    }
+    stage('Install dependencies') {
+      steps {
+        echo 'Install dependencies'
+        sh 'npm install'
       }
     }
     stage('Eslint') {
-      step {
+      steps {
         echo 'eslit step comes here'
-        sh 'npm run test'
+        sh 'npm test'
       }
     }
   }
