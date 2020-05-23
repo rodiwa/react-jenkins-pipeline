@@ -26,7 +26,7 @@ pipeline {
     stage('Eslint') {
       steps {
         echo 'eslit step comes here'
-        sh 'npm test'
+        sh 'npm run test:noWatch'
       }
     }
   }
